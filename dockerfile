@@ -9,7 +9,7 @@ RUN npm i
 
 RUN npm run build
 
-EXPOSE 5174
-ENV PORT 5174
+EXPOSE 5172
+ENV PORT 5172
 
 CMD [ "serve", "dist", "-s" ]

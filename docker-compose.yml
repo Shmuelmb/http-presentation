@@ -5,5 +5,5 @@ services:
     build:
       context: .
     ports:
-      - "5174:5174"
+      - "5172:5172"
     command: ["serve", "dist", "-s"]
