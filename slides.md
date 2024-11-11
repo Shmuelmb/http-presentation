@@ -110,7 +110,7 @@ protocol://subdomain.host:port/path?query
 - Hostname: The domain name or IP address of the server hosting the resource (e.g., example.com)
 - Path: The path to the resource (e.g., /path/to/resource)
 - Port (optional): The port number used to access the resource (e.g., 8080)
-- Query parameters (optional): Additional information passed to the server (e.g., ?param1=value1&param2=value2)
+- Query parameters (optional): Additional information passed to the server.
 - Subdomain (optional): Additional levels of subdomains (e.g., www.example.com)
 
 </v-clicks>
@@ -141,7 +141,7 @@ h1 {
 - https://example.com - https protocol
 - http://example.com/path/to/resource - With path
 - http://example.com:8080/path/to/resource - With port
-- http://example.com/path/to/resource?param1=value1&param2=value2 - With query parameters
+- http://example.com?param1=value1&param2=value2 - With query parameters
 - http://www.example.com/path/to/resource - With subdomains
 
 ---
@@ -232,7 +232,7 @@ GET http://localhost:3000/users
 
 # Request and Response data flow
 
-**Request Structure**
+**Response Structure**
 
 After the client makes a request, the server responds with a message.
 <br/>The response includes a status code, headers, and optionally, a body containing data. <br/>The type of response varies based on the request type and server processing.
@@ -247,13 +247,10 @@ Content-Length: 123
 ...(optional body)
 ```
 
-The status code indicates the result of the request:
-
-- 200: Success
-- 404 : Not Found
-- 500: Internal Server Error
-- 204: No Content
-- And more ...
+Status code start with 2 describe success (200)
+Status code start with 3 describe redirect (301)
+Status code start with 4 describe error (404)
+Status code start with 5 describe server error (500)
 
 --- #10
 

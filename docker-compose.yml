@@ -6,4 +6,4 @@ services:
       context: .
     ports:
       - "5172:5172"
-    command: ["serve", "dist", "-s"]
+    restart: unless-stopped
