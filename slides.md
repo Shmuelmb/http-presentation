@@ -30,39 +30,38 @@ WHAT IS HTTP PROTOCOL AND HOW IT WORKS?
   </span>
 </div>
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div>
-
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
 -->
 
 ---
 
-## transition: fade-out
-
 # What is HTTP Protocol?
 
-Slidev is a slides maker and presenter designed for developers, consist of the following features
+**Definition**
 
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - themes can be shared and re-used as npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embed Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export to PDF, PPTX, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - virtually anything that's possible on a webpage is possible in Slidev
-  <br>
-  <br>
+<v-clicks  every="2">
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web.
+It is a protocol that allows web clients (e.g., browsers) and servers to communicate by exchanging requests and responses.
+
+**_Stateless_**: Each request from the client is independent; the server does not retain any state information between requests.
+<br/>
+**_Application Layer Protocol_**: Operates at the topmost layer of the OSI model, focusing on delivering web content.
+
+**Main Functions**
+<br/>
+Requesting web pages (HTML, images, scripts, etc.) from a web server.
+Transferring data between web clients and servers.
+
+**Example Workflow**
+<br/>
+User enters a web address (http://example.com) in their browser.
+<br/>
+Browser (client) sends an HTTP request to the server hosting example.com.
+<br/>
+Server responds with an HTTP response containing the requested page or resource.
+</v-clicks>
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
@@ -87,591 +86,254 @@ Here is another comment.
 
 ---
 
-transition: slide-up
-level: 2
+# URL
 
----
+**Definition**
 
-# Navigation
+The URL (Uniform Resource Locator) is a string that specifies the location of a resource on the web.
+<br/>
+It serves as the address used to access resources on the internet, such as web pages, images, and other files.
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/ui#navigation-bar)
+<v-clicks>
 
-## Keyboard Shortcuts
+**Structure**
+<br/>
+https://www.ynet.co.il/news/article/yokra14145847?page=1
+<br/>
 
-|                                                    |                             |
-| -------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                | next animation or slide     |
-| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                      | previous slide              |
-| <kbd>down</kbd>                                    | next slide                  |
+**Lets break it down:**
+<br/>
 
-<!-- https://sli.dev/guide/animations.html#click-animation -->
+protocol://subdomain.host:port/path?query
 
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-  alt=""
-/>
+- Protocol: Defines how to access the resource (e.g., http, https)
+- Hostname: The domain name or IP address of the server hosting the resource (e.g., example.com)
+- Path: The path to the resource (e.g., /path/to/resource)
+- Port (optional): The port number used to access the resource (e.g., 8080)
+- Query parameters (optional): Additional information passed to the server (e.g., ?param1=value1&param2=value2)
+- Subdomain (optional): Additional levels of subdomains (e.g., www.example.com)
 
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
+</v-clicks>
+<!--
+You can have `style` tag in markdown to override the style for the current page.
+Learn more: https://sli.dev/features/slide-scope-style
+-->
 
----
-
-layout: two-cols
-layoutClass: gap-16
-
----
-
-# Table of contents
-
-You can use the `Toc` component to generate a table of contents for your slides:
-
-```html
-<Toc minDepth="1" maxDepth="1"></Toc>
-```
-
-The title will be inferred from your slide content, or you can override it with `title` and `level` in your frontmatter.
-
-::right::
-
-<Toc v-click minDepth="1" maxDepth="2"></Toc>
-
----
-
-layout: image-right
-image: https://cover.sli.dev
-
----
-
-# Code
-
-Use code snippets and get the highlighting directly, and even types hover!
-
-```ts {all|5|7|7-8|10|all} twoslash
-// TwoSlash enables TypeScript hover information
-// and errors in markdown code blocks
-// More at https://shiki.style/packages/twoslash
-
-import { computed, ref } from "vue";
-
-const count = ref(0);
-const doubled = computed(() => count.value * 2);
-
-doubled.value = 2;
-```
-
-<arrow v-click="[4, 5]" x1="350" y1="310" x2="195" y2="334" color="#953" width="2" arrowSize="1" />
-
-<!-- This allow you to embed external code blocks -->
-
-<<< @/snippets/external.ts#snippet
-
-<!-- Footer -->
-
-[Learn more](https://sli.dev/features/line-highlighting)
-
-<!-- Inline style -->
 <style>
-.footnotes-sep {
-  @apply mt-5 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
+h1 {
+  background-color: #2B90B6;
+  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
 }
 </style>
 
-<!--
-Notes can also sync with clicks
+---
 
-[click] This will be highlighted after the first click
+# URL
 
-[click] Highlighted with `count = ref(0)`
+**Examples**
 
-[click:3] Last click (skip two clicks)
--->
+- http://example.com - Default port
+- https://example.com - https protocol
+- http://example.com/path/to/resource - With path
+- http://example.com:8080/path/to/resource - With port
+- http://example.com/path/to/resource?param1=value1&param2=value2 - With query parameters
+- http://www.example.com/path/to/resource - With subdomains
 
 ---
 
-## level: 2
+# Request and Response data flow
 
-# Shiki Magic Move
+**Definition**
 
-Powered by [shiki-magic-move](https://shiki-magic-move.netlify.app/), Slidev supports animations across multiple code snippets.
+HTTP communication follows a request-response model, where a client (e.g., web browser) makes a request to the server, and the server processes it and sends back a response.
+<br/>
 
-Add multiple code blocks and wrap them with <code>````md magic-move</code> (four backticks) to enable the magic move. For example:
+**Request Flow**
 
-````md magic-move {lines: true}
-```ts {*|2|*}
-// step 1
-const author = reactive({
-  name: "John Doe",
-  books: [
-    "Vue 2 - Advanced Guide",
-    "Vue 3 - Basic Guide",
-    "Vue 4 - The Mystery",
-  ],
-});
-```
+- Client sends an HTTP request to the server.
+- Server processes the request and generates a response.
 
-```ts {*|1-2|3-4|3-4,8}
-// step 2
-export default {
-  data() {
-    return {
-      author: {
-        name: "John Doe",
-        books: [
-          "Vue 2 - Advanced Guide",
-          "Vue 3 - Basic Guide",
-          "Vue 4 - The Mystery",
-        ],
-      },
-    };
-  },
-};
-```
+**Response Flow**
 
-```ts
-// step 3
-export default {
-  data: () => ({
-    author: {
-      name: "John Doe",
-      books: [
-        "Vue 2 - Advanced Guide",
-        "Vue 3 - Basic Guide",
-        "Vue 4 - The Mystery",
-      ],
-    },
-  }),
-};
-```
-
-Non-code blocks are ignored.
-
-```vue
-<!-- step 4 -->
-<script setup>
-const author = {
-  name: "John Doe",
-  books: [
-    "Vue 2 - Advanced Guide",
-    "Vue 3 - Basic Guide",
-    "Vue 4 - The Mystery",
-  ],
-};
-</script>
-```
-````
+- Server sends an HTTP response to the client.
+- Client processes the response and displays the content to the user.
 
 ---
 
-# Components
+# Request and Response data flow
 
-<div grid="~ cols-2 gap-4">
-<div>
+**Request Structure**
 
-You can use Vue components directly inside your slides.
+- URL: Identifies the resource being requested.
+- Method: Specifies the action to be performed (e.g., GET, POST, PUT).
+- Headers: Additional information (e.g., User-Agent, Accept).
+- Body: Data sent with the request (only for certain methods like POST or PUT).
 
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+**Request Methods**
 
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-<!--
-Presenter note with **bold**, *italic*, and ~~striked~~ text.
-
-Also, HTML elements are valid:
-<div class="flex w-full">
-  <span style="flex-grow: 1;">Left content</span>
-  <span>Right content</span>
-</div>
--->
+- GET: Retrieves data from a specified resource, in this method we don't send any data to the server.
+- POST: Submits data to a server for processing. (Non-idempotent method )
+- PUT: Replaces a resource on the server. (Idempotent method)
+- DELETE: Removes a resource from the server. (Idempotent method)
 
 ---
 
-## class: px-20
+# Request and Response data flow
 
-# Themes
+**Request Example**
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+We want to create new user in our system.
+To do that we will send a POST request to the server.
 
-<div grid="~ cols-2 gap-2" m="t-2">
-
-```yaml
----
-theme: default
----
+```http
+POST http://localhost:3000/users
 ```
 
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/guide/theme-addon#use-theme) and
-check out the [Awesome Themes Gallery](https://sli.dev/resources/theme-gallery).
-
----
-
-# Clicks Animations
-
-You can add `v-click` to elements to add a click animation.
-
-<div v-click>
-
-This shows up when you click the slide:
-
-```html
-<div v-click>This shows up when you click the slide.</div>
-```
-
-</div>
-
-<br>
-
-<v-click>
-
-The <span v-mark.red="3"><code>v-mark</code> directive</span>
-also allows you to add
-<span v-mark.circle.orange="4">inline marks</span>
-, powered by [Rough Notation](https://roughnotation.com/):
-
-```html
-<span v-mark.underline.orange>inline markers</span>
-```
-
-</v-click>
-
-<div mt-20 v-click>
-
-[Learn more](https://sli.dev/guide/animations#click-animation)
-
-</div>
-
----
-
-# Motions
-
-Motion animations are powered by [@vueuse/motion](https://motion.vueuse.org/), triggered by `v-motion` directive.
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }"
-  :click-3="{ x: 80 }"
-  :leave="{ x: 1000 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-square.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-circle.png"
-      alt=""
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute inset-0"
-      src="https://sli.dev/logo-triangle.png"
-      alt=""
-    />
-  </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
+```json
+{
+  "id": 1,
+  "name": "John Doe",
+  "age": 30,
+  "email": "TmKJ9@example.com"
 }
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 30, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn more](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box. Powered by [KaTeX](https://katex.org/).
-
-<div h-3 />
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-
-$$
-{1|3|all}
-\begin{aligned}
-\nabla \cdot \vec{E} &= \frac{\rho}{\varepsilon_0} \\
-\nabla \cdot \vec{B} &= 0 \\
-\nabla \times \vec{E} &= -\frac{\partial\vec{B}}{\partial t} \\
-\nabla \times \vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t}
-\end{aligned}
-$$
-
-[Learn more](https://sli.dev/features/latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-4 gap-5 pt-4 -mb-6">
-
-```mermaid {scale: 0.5, alt: 'A simple sequence diagram'}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
 ```
 
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
+If we want only to update the name of the user, we will send a PUT request to the server.
+
+```http
+PUT http://localhost:3000/users/1
 ```
 
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-      ::icon(fa fa-book)
-      Popularisation
-        British popular psychology author Tony Buzan
-    Research
-      On effectiveness<br/>and features
-      On Automatic creation
-        Uses
-            Creative techniques
-            Strategic planning
-            Argument mapping
-    Tools
-      Pen and paper
-      Mermaid
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
+```json
+{
+  "name": "John Doe"
 }
+```
 
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
+---
+
+# Request and Response data flow
+
+**Request Example**
+
+If we want to get all users, we will send a GET request to the server.
+
+```http
+GET http://localhost:3000/users
+
+```
+
+---
+
+# Request and Response data flow
+
+**Request Structure**
+
+After the client makes a request, the server responds with a message.
+<br/>The response includes a status code, headers, and optionally, a body containing data. <br/>The type of response varies based on the request type and server processing.
+
+The response structure is as follows:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+Content-Length: 123
+
+...(optional body)
+```
+
+The status code indicates the result of the request:
+
+- 200: Success
+- 404 : Not Found
+- 500: Internal Server Error
+- 204: No Content
+- And more ...
+
+--- #10
+
+# Request and Response data flow
+
+**Request Example**
+
+When we try to GET something from the server, we get the following response.
+
+```http
+GET http://localhost:3000/users
+
+```
+
+```http
+HTTP/1.1 200 OK
+Content-Type: json
+Content-Length: 123
+
+{
+  "id": 1,
+  "name": "John Doe",
+  "age": 30,
+  "email": "TmKJ9@example.com"
 }
+```
 
-cloud {
-  [Example 1]
+But if we try to GET something that doesn't exist, we get the following response.
+
+```http
+GET http://localhost:3000/users/1234
+
+```
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: json
+Content-Length: 123
+
+{
+  "error": "User not found"
 }
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
 ```
 
-</div>
+--- #11
 
-Learn more: [Mermaid Diagrams](https://sli.dev/features/mermaid) and [PlantUML Diagrams](https://sli.dev/features/plantuml)
+# HTTP & Ports
 
----
+<br/>
+A port is a logical construct that serves as a communication endpoint in a computer network.
+<br/>
+HTTP uses different ports for different services. <br/>Here are some of the most common ports:
 
-foo: bar
-dragPos:
-square: 691,32,167,\_,-16
+- 80: HTTP
+- 443: HTTPS
+- 8080: HTTP Proxy
+  And more...
 
----
-
-dragPos:
-square: -19,0,0,0
-
----
-
-dragPos:
-square: -19,0,0,0
+  HTTP can work on any port, but it is recommended to use well-known ports like 80 for HTTP and 443 for HTTPS.
 
 ---
 
-dragPos:
-square: -19,0,0,0
+# HTTPS
 
----
-dragPos:
-  square: -19,0,0,0
----
+**Definition**
 
-# Draggable Elements
+**What is HTTPS?**
+<br/>
+HTTPS stands for HyperText Transfer Protocol Secure. is an encrypted version of HTTP. It uses a secure protocol to encrypt the data being transmitted.
+<br/>
+It provides additional security features, such as authentication, encryption, and data integrity.
+<br/>
+Today all the web traffic is encrypted using HTTPS.
 
-Double-click on the draggable elements to edit their positions.
+**_How does HTTPS work?_**
 
-<br>
+- Client sends an HTTP request to the server.
+- Server responds with an HTTP response containing the requested page or resource.
+- Client decrypts the response using the server's public key.
+- Client verifies the integrity and authenticity of the response.
+- Client displays the decrypted content to the user and show us icon that the page is secure.
 
-###### Directive Usage
-
-```md
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-```
-
-<br>
-
-###### Component Usage
-
-```md
-<v-drag text-3xl>
-  <carbon:arrow-up />
-  Use the `v-drag` component to have a draggable container!
-</v-drag>
-```
-
-<v-drag pos="663,206,261,_,-15">
-  <div text-center text-3xl border border-main rounded>
-    Double-click me!
-  </div>
-</v-drag>
-
-<img v-drag="'square'" src="https://sli.dev/logo.png">
-
-###### Draggable Arrow
-
-```md
-<v-drag-arrow two-way />
-```
-
-<v-drag-arrow pos="67,452,253,46" two-way op70 />
-
----
-
-src: ./pages/imported-slides.md
-hide: false
-
----
-
-
----
-
-# Monaco Editor
-
-Slidev provides built-in Monaco Editor support.
-
-Add `{monaco}` to the code block to turn it into an editor:
-
-```ts {monaco}
-import { ref } from "vue";
-import { emptyArray } from "./external";
-
-const arr = ref(emptyArray(10));
-```
-
-Use `{monaco-run}` to create an editor that can execute the code directly in the slide:
-
-```ts {monaco-run}
-import { version } from "vue";
-import { emptyArray, sayHello } from "./external";
-
-sayHello();
-console.log(`vue ${version}`);
-console.log(
-  emptyArray<number>(10).reduce(
-    (fib) => [...fib, fib.at(-1)! + fib.at(-2)!],
-    [1, 1]
-  )
-);
-```
-
----
-
-layout: center
-class: text-center
-
----
-
-# Learn More
-
-[Documentation](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/resources/showcases)
-
-<PoweredBySlidev mt-10 />
+For example in this site http://httpforever.com/ there is no encryption and the browser will display us that the page is not secure.
