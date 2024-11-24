@@ -40,21 +40,14 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 **Definition**
 
-<v-clicks  every="2">
+<v-clicks  every="1">
 
 HTTP (HyperText Transfer Protocol) is the foundation of data communication on the web.
 It is a protocol that allows web clients (e.g., browsers) and servers to communicate by exchanging requests and responses.
 
 **_Stateless_**: Each request from the client is independent; the server does not retain any state information between requests.
-<br/>
-**_Application Layer Protocol_**: Operates at the topmost layer of the OSI model, focusing on delivering web content.
 
-**Main Functions**
-<br/>
-Requesting web pages (HTML, images, scripts, etc.) from a web server.
-Transferring data between web clients and servers.
-
-**Example Workflow**
+**OK, but how does it work?**
 <br/>
 User enters a web address (http://example.com) in their browser.
 <br/>
@@ -85,6 +78,16 @@ Here is another comment.
 -->
 
 ---
+layout: image
+
+# the image source
+
+image: images/osi.png
+backgroundSize: contain
+
+---
+
+---
 
 # URL
 
@@ -98,7 +101,7 @@ It serves as the address used to access resources on the internet, such as web p
 
 **Structure**
 <br/>
-https://www.ynet.co.il/news/article/yokra14145847?page=1
+https://www.ynet.co.il:443/news/article/yokra14145847?page=1
 <br/>
 
 **Lets break it down:**
@@ -109,7 +112,7 @@ protocol://subdomain.host:port/path?query
 - Protocol: Defines how to access the resource (e.g., http, https)
 - Hostname: The domain name or IP address of the server hosting the resource (e.g., example.com)
 - Path: The path to the resource (e.g., /path/to/resource)
-- Port (optional): The port number used to access the resource (e.g., 8080)
+- Port (optional): The port number (More info in the next slide)
 - Query parameters (optional): Additional information passed to the server.
 - Subdomain (optional): Additional levels of subdomains (e.g., www.example.com)
 
@@ -131,6 +134,23 @@ h1 {
 }
 </style>
 
+--- 
+
+# HTTP & Ports
+
+<br/>
+A port is a logical construct that serves as a communication endpoint in a computer network.
+<br/>
+HTTP uses different ports for different services. <br/>Here are some of the most common ports:
+
+- 80: HTTP
+- 443: HTTPS
+- 8080: HTTP Proxy
+- And more...
+
+HTTP can work on any port, but it is recommended to use well-known ports like 80 for HTTP and 443 for HTTPS.
+
+
 ---
 
 # URL
@@ -140,9 +160,9 @@ h1 {
 - http://example.com - Default port
 - https://example.com - https protocol
 - http://example.com/path/to/resource - With path
-- http://example.com:8080/path/to/resource - With port
+- http://example.com:8080 - With port
 - http://example.com?param1=value1&param2=value2 - With query parameters
-- http://www.example.com/path/to/resource - With subdomains
+- http://app.example.com - With subdomains
 
 ---
 
@@ -163,9 +183,10 @@ HTTP communication follows a request-response model, where a client (e.g., web b
 - Server sends an HTTP response to the client.
 - Client processes the response and displays the content to the user.
 
+
 ---
 
-# Request and Response data flow
+
 
 **Request Structure**
 
@@ -183,15 +204,16 @@ HTTP communication follows a request-response model, where a client (e.g., web b
 
 ---
 
-# Request and Response data flow
+
 
 **Request Example**
 
-We want to create new user in our system.
-To do that we will send a POST request to the server.
+Let's say we want to create a new user in our system.
+To do that we send a POST request to the server.
+<v-clicks>
 
 ```http
-POST http://localhost:3000/users
+POST https://jsonplaceholder.typicode.com/users
 ```
 
 ```json
@@ -203,10 +225,10 @@ POST http://localhost:3000/users
 }
 ```
 
-If we want only to update the name of the user, we will send a PUT request to the server.
+To do update the name of the user, we send a PUT request to the server.
 
 ```http
-PUT http://localhost:3000/users/1
+PUT https://jsonplaceholder.typicode.com/users
 ```
 
 ```json
@@ -215,25 +237,25 @@ PUT http://localhost:3000/users/1
 }
 ```
 
+</v-clicks>
+
 ---
 
-# Request and Response data flow
 
-**Request Example**
 
-If we want to get all users, we will send a GET request to the server.
+To get all users, we send a GET request to the server.
 
 ```http
-GET http://localhost:3000/users
+GET https://jsonplaceholder.typicode.com/users
 
 ```
 
 ---
 
-# Request and Response data flow
 
 **Response Structure**
 
+<v-clicks c>
 After the client makes a request, the server responds with a message.
 <br/>The response includes a status code, headers, and optionally, a body containing data. <br/>The type of response varies based on the request type and server processing.
 
@@ -247,21 +269,26 @@ Content-Length: 123
 ...(optional body)
 ```
 
-Status code start with 2 describe success (200)
-Status code start with 3 describe redirect (301)
-Status code start with 4 describe error (404)
-Status code start with 5 describe server error (500)
+**Status Codes**
+
+- Informational responses (100 – 199), such as 100 Continue
+- Successful responses (200 – 299), such as 200 OK
+- Redirection messages (300 – 399), such as 301 Moved Permanently
+- Client error responses (400 – 499), such as 400 Bad Request
+- Server error responses (500 – 599), such as 500 Internal Server Error
+
+</v-clicks>
 
 --- #10
 
-# Request and Response data flow
 
-**Request Example**
 
-When we try to GET something from the server, we get the following response.
+**Response Example**
+
+To get all users from the server, we send a GET request to the server.
 
 ```http
-GET http://localhost:3000/users
+GET https://jsonplaceholder.typicode.com/users
 
 ```
 
@@ -270,18 +297,26 @@ HTTP/1.1 200 OK
 Content-Type: json
 Content-Length: 123
 
-{
+[
+  {
   "id": 1,
   "name": "John Doe",
   "age": 30,
   "email": "TmKJ9@example.com"
-}
+  },
+  ...
+]
+
+
+
 ```
+---
+
 
 But if we try to GET something that doesn't exist, we get the following response.
 
 ```http
-GET http://localhost:3000/users/1234
+GET https://jsonplaceholder.typicode.com/users/1234
 
 ```
 
@@ -295,21 +330,7 @@ Content-Length: 123
 }
 ```
 
---- #11
 
-# HTTP & Ports
-
-<br/>
-A port is a logical construct that serves as a communication endpoint in a computer network.
-<br/>
-HTTP uses different ports for different services. <br/>Here are some of the most common ports:
-
-- 80: HTTP
-- 443: HTTPS
-- 8080: HTTP Proxy
-  And more...
-
-  HTTP can work on any port, but it is recommended to use well-known ports like 80 for HTTP and 443 for HTTPS.
 
 ---
 
@@ -327,7 +348,7 @@ Today all the web traffic is encrypted using HTTPS.
 
 **_How does HTTPS work?_**
 
-- Client sends an HTTP request to the server.
+- Client sends a first GET request to the server.
 - Server responds with an HTTP response containing the requested page or resource.
 - Client decrypts the response using the server's public key.
 - Client verifies the integrity and authenticity of the response.
