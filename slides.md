@@ -134,12 +134,12 @@ h1 {
 }
 </style>
 
---- 
+---
 
 # HTTP & Ports
 
 <br/>
-A port is a logical construct that serves as a communication endpoint in a computer network.
+ A port is a virtual software-based point where network connections start and end. All network-connected computers expose a number of ports to enable them to receive traffic. Each port is associated with a specific process or service, and different protocols use different ports
 <br/>
 HTTP uses different ports for different services. <br/>Here are some of the most common ports:
 
@@ -149,7 +149,6 @@ HTTP uses different ports for different services. <br/>Here are some of the most
 - And more...
 
 HTTP can work on any port, but it is recommended to use well-known ports like 80 for HTTP and 443 for HTTPS.
-
 
 ---
 
@@ -183,10 +182,7 @@ HTTP communication follows a request-response model, where a client (e.g., web b
 - Server sends an HTTP response to the client.
 - Client processes the response and displays the content to the user.
 
-
 ---
-
-
 
 **Request Structure**
 
@@ -204,13 +200,17 @@ HTTP communication follows a request-response model, where a client (e.g., web b
 
 ---
 
-
-
 **Request Example**
+<v-clicks>
+To get all users, we send a GET request to the server.
+
+```http
+GET https://jsonplaceholder.typicode.com/users
+
+```
 
 Let's say we want to create a new user in our system.
 To do that we send a POST request to the server.
-<v-clicks>
 
 ```http
 POST https://jsonplaceholder.typicode.com/users
@@ -224,38 +224,35 @@ POST https://jsonplaceholder.typicode.com/users
   "email": "TmKJ9@example.com"
 }
 ```
+</v-clicks>
+---
 
+
+<v-clicks>
 To do update the name of the user, we send a PUT request to the server.
 
 ```http
-PUT https://jsonplaceholder.typicode.com/users
+PUT https://jsonplaceholder.typicode.com/users/1
 ```
 
 ```json
 {
-  "name": "John Doe"
+  "name": "Shmuel Cohen"
 }
 ```
 
+To delete the user, we send a DELETE request to the server.
+
+```http
+DELETE https://jsonplaceholder.typicode.com/users/1
+```
 </v-clicks>
 
 ---
 
-
-
-To get all users, we send a GET request to the server.
-
-```http
-GET https://jsonplaceholder.typicode.com/users
-
-```
-
----
-
-
 **Response Structure**
 
-<v-clicks c>
+<v-clicks>
 After the client makes a request, the server responds with a message.
 <br/>The response includes a status code, headers, and optionally, a body containing data. <br/>The type of response varies based on the request type and server processing.
 
@@ -279,9 +276,7 @@ Content-Length: 123
 
 </v-clicks>
 
---- #10
-
-
+--- 
 
 **Response Example**
 
@@ -306,10 +301,8 @@ Content-Length: 123
   },
   ...
 ]
-
-
-
 ```
+
 ---
 
 
@@ -330,8 +323,6 @@ Content-Length: 123
 }
 ```
 
-
-
 ---
 
 # HTTPS
@@ -348,10 +339,10 @@ Today all the web traffic is encrypted using HTTPS.
 
 **_How does HTTPS work?_**
 
-- Client sends a first GET request to the server.
-- Server responds with an HTTP response containing the requested page or resource.
-- Client decrypts the response using the server's public key.
-- Client verifies the integrity and authenticity of the response.
-- Client displays the decrypted content to the user and show us icon that the page is secure.
+- Hello Messages: The client and server introduce themselves and agree on how to communicate securely.
+- Server Sends Certificate: The server proves its identity with a certificate (SSL/TLS).
+- Client Checks Certificate: The client makes sure the certificate is valid and trusted.
+- Secure Key Exchange: The client and server create a shared secret key.
+- Secure Communication: All messages are encrypted using the shared key.
 
 For example in this site http://httpforever.com/ there is no encryption and the browser will display us that the page is not secure.
