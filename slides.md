@@ -114,7 +114,7 @@ protocol://subdomain.host:port/path?query
 - Path: The path to the resource (e.g., /path/to/resource)
 - Port (optional): The port number (More info in the next slide)
 - Query parameters (optional): Additional information passed to the server.
-- Subdomain (optional): Additional levels of subdomains (e.g., www.example.com)
+- Subdomain (optional): Additional levels of subdomains (e.g., ```weglot.com``` and ```dashboard.weglot.com```)
 
 </v-clicks>
 <!--
